@@ -1,0 +1,20 @@
+<div class="lists row" >
+  <div class="col-md-12">
+    <nb-card class="list-card" [nbSpinner]="loading">
+      <nb-card-header>Products <button nbButton (click)="open()">Add Product</button></nb-card-header>
+      <nb-card-body>
+        <nb-list>
+          <nb-list-item *ngFor="let product of products">
+            {{ product.product }}
+            <a (click)="editProduct(product)" href="javascript:;" class="sidebar-toggle floatRight50">
+                  <nb-icon icon="edit-outline"></nb-icon>
+            </a>
+            <a (click)="deleteProduct(product)" href="javascript:;" class="sidebar-toggle floatRight20">
+                  <nb-icon icon="trash-outline"></nb-icon>
+            </a>
+          </nb-list-item>
+        </nb-list>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

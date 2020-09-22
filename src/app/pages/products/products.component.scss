@@ -1,0 +1,28 @@
+@import '../../@theme/styles/themes';
+
+
+@include nb-install-component() {
+  .floatRight50{
+    position: absolute;
+    right: 50px;
+  }
+  .floatRight20{
+    position: absolute;
+    right: 20px;
+  }
+  .list-card {
+    nb-card-header {
+      border-bottom: none;
+    }
+
+    button {
+      float: right;
+      padding: 0.5rem;
+      border-radius: 0.4rem;
+    }
+
+    nb-card-body {
+      padding: 0;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import '../../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  input {
+    width: 100%;
+  }
+
+  nb-select{
+    width: 100%;
+  }
+
+  .form-control-danger{
+    border: 2px solid red;
+  }
+
+  .cancel {
+    margin-right: 1rem;
+  }
+
+  input, textarea, select, nb-select{
+    background-color: #252547;
+  }
+
+  .select-button{
+    padding: 0 !important;
+    width: 100%  !important;
+    border: 0  !important;
+  }
+}

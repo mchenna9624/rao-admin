@@ -1,0 +1,74 @@
+<div class="card-row">
+  <div class="card-col">
+    <nb-card size="giant">
+      <nb-card-header>Enter Product Details</nb-card-header>
+      <nb-card-body >
+        <form [formGroup]="productForm" class="step-container">
+          <div class="form-group row">
+            <label for="productName" class="label col-sm-3 col-form-label">Product Name</label>
+            <div class="col-sm-9">
+              <input type="text" placeholder="Enter Product Name" class="form-control" formControlName="productName"
+                     [ngClass]="{'form-control-danger': productForm.invalid && productForm.get('productName').invalid && productForm.get('productName').touched}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="price" class="label col-sm-3 col-form-label">Price</label>
+            <div class="col-sm-9">
+              <input type="text" placeholder="Enter Price of Product" class="form-control" formControlName="price"
+                     [ngClass]="{'form-control-danger': productForm.invalid && productForm.get('price').invalid && productForm.get('price').touched}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="stock" class="label col-sm-3 col-form-label">Stock</label>
+            <div class="col-sm-9">
+              <input type="text" placeholder="Enter Stock Quantity" class="form-control" formControlName="stock"
+                     [ngClass]="{'form-control-danger': productForm.invalid && productForm.get('stock').invalid && productForm.get('stock').touched}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="salePrice" class="label col-sm-3 col-form-label">Sale Price</label>
+            <div class="col-sm-9">
+              <input type="text" placeholder="Enter Salce Price" class="form-control" formControlName="salePrice"
+                     [ngClass]="{'form-control-danger': productForm.invalid && productForm.get('salePrice').invalid && productForm.get('salePrice').touched}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="discount" class="label col-sm-3 col-form-label">Discount</label>
+            <div class="col-sm-9">
+              <input type="text" placeholder="Enter Discount" class="form-control" formControlName="discount"
+                     [ngClass]="{'form-control-danger': productForm.invalid && productForm.get('discount').invalid && productForm.get('discount').touched}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="shortDesc" class="label col-sm-3 col-form-label">Short Description</label>
+            <div class="col-sm-9">
+              <input type="text" placeholder="Enter Short Description" class="form-control" formControlName="shortDesc"
+                     [ngClass]="{'form-control-danger': productForm.invalid && productForm.get('shortDesc').invalid && productForm.get('shortDesc').touched}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <textarea fullWidth placeholder="Description" id="description" class="form-control" formControlName="desc"
+                     [ngClass]="{'form-control-danger': productForm.invalid && productForm.get('desc').invalid && productForm.get('desc').touched}"></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <select placeholder="Please Select Category" size="large" class="form-control" formControlName="category"
+                     [ngClass]="{'form-control-danger': productForm.invalid && productForm.get('category').invalid && productForm.get('category').touched}">
+                <option value="" selected>Please Select Category</option>
+                <option *ngFor="let category of categories" [value]="category.category">
+                  {{category.category}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </nb-card-body>
+      <nb-card-footer>
+        <button class="cancel" nbButton status="danger" (click)="cancel()">Cancel</button>
+        <button nbButton status="success" (click)="submit()">Submit</button>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+</div>

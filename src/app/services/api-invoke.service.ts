@@ -18,27 +18,27 @@ export class ApiInvokeService {
      return this.http.get<any>(getUrl);
  }
 
- post(getUrl: string, category: ICategoriesModel): Observable<any>  {
+ post(getUrl: string, data: any): Observable<any>  {
     const contentHeader = new HttpHeaders({ "Content-Type": "application/json" });
-    return this.http.post<any>(getUrl, category);
+    return this.http.post<any>(getUrl, data);
 }
 
-delete(getUrl: string, category: ICategoriesModel): Observable<any>  {
+delete(getUrl: string, data: any): Observable<any>  {
    const options = {
      headers: new HttpHeaders({
        'Content-Type': 'application/json',
      }),
-     body: category
+     body: data
    };
    return this.http.delete<any>(getUrl, options);
 }
 
-update(getUrl: string, category: any): Observable<any>  {
+update(getUrl: string, data: any): Observable<any>  {
    const options = {
      headers: new HttpHeaders({
        'Content-Type': 'application/json',
      }),
-     body: category
+     body: data
    };
    return this.http.put<any>(getUrl, options);
 }

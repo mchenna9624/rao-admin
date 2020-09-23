@@ -23,6 +23,7 @@ export class ProductsComponent implements OnInit {
     this.loading = true;
     this.refreshProducts();
     this.refreshCategories();
+    this.cacheService.setEditableProduct(null);
   }
 
   refreshCategories(): void {
@@ -42,34 +43,38 @@ export class ProductsComponent implements OnInit {
   open(): void {
     this.dialogService.open(ProductPromptComponent, { closeOnBackdropClick: false })
       .onClose.subscribe((product) => {
-        //product && this.postProduct(product);
+        product && this.postProduct(product);
       });
   }
 
-  /*postProduct(product: ProductsModel): void{
+  postProduct(product: IProductsModel): void{
       this.loading = true;
-      this.apiInvokeService.post(this.apiInvokeService.productsEndPointUrl, {product: product}).subscribe( (data) => {
+      this.apiInvokeService.post(this.apiInvokeService.productsEndPointUrl, product).subscribe( (data) => {
       this.refreshProducts();
     });
   }
 
-  editProduct(product: ProductsModel): void {
+  editProduct(product: IProductsModel): void {
     this.editableProduct = product;
-    this.dialogService.open(DialogNamePromptComponent)
+    this.cacheService.setEditableProduct(product);
+    this.dialogService.open(ProductPromptComponent)
       .onClose.subscribe((newProduct) => {
-        this.editableProduct["newProduct"] = newProduct;
+        this.cacheService.setEditableProduct(null);
+        if(newProduct){
+          this.editableProduct["newProduct"] = newProduct;          
           this.loading = true;
-        this.apiInvokeService.update(this.apiInvokeService.productssEndPointUrl, this.editableProduct).subscribe( () => {
-          this.refreshProducts();
-        });
+          this.apiInvokeService.update(this.apiInvokeService.productsEndPointUrl, this.editableProduct).subscribe( () => {
+            this.refreshProducts();
+          });
+        }
       });
   }
 
-  deleteProduct(product: ProductsModel): void {
+  deleteProduct(product: IProductsModel): void {
       this.loading = true;
       this.apiInvokeService.delete(this.apiInvokeService.productsEndPointUrl, product).subscribe( () => {
         this.refreshProducts();
       });
-  }*/
+  }
 
 }

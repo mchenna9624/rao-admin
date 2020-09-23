@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ICategoriesModel } from '../interfaces/rao-admin-model'
+import { ICategoriesModel, IProductsModel } from '../interfaces/rao-admin-model'
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +7,7 @@ import { ICategoriesModel } from '../interfaces/rao-admin-model'
 export class CacheService {
 
   private categories: ICategoriesModel;
+  private product: IProductsModel;
 
   constructor() { }
 
@@ -16,6 +17,14 @@ export class CacheService {
 
   getCategories(): ICategoriesModel{
     return this.categories;
+  }
+
+  setEditableProduct(product: IProductsModel): void {
+    this.product = product;
+  }
+
+  getEditableProduct(): IProductsModel {
+    return this.product;
   }
 
 }

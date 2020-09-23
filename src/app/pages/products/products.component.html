@@ -5,7 +5,7 @@
       <nb-card-body>
         <nb-list>
           <nb-list-item *ngFor="let product of products">
-            {{ product.product }}
+            {{ product.productName }} - {{ product.category }}
             <a (click)="editProduct(product)" href="javascript:;" class="sidebar-toggle floatRight50">
                   <nb-icon icon="edit-outline"></nb-icon>
             </a>

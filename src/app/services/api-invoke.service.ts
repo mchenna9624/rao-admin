@@ -6,10 +6,14 @@ import { ICategoriesModel } from '../interfaces/rao-admin-model';
 @Injectable()
 export class ApiInvokeService {
 
-  //categoriesEndPointUrl: string = "https://rao-admin-node.herokuapp.com/categories";
-  categoriesEndPointUrl: string = "http://localhost:5000/categories";
-  //productsEndPointUrl: string = "https://rao-admin-node.herokuapp.com/products";
-  productsEndPointUrl: string = "http://localhost:5000/products";
+  categoriesEndPointUrl: string = "https://rao-admin-node.herokuapp.com/categories";
+  productsEndPointUrl: string = "https://rao-admin-node.herokuapp.com/products";
+  inprogressOrdersUrl: string = "http://realchoice-node-dev.ap-southeast-1.elasticbeanstalk.com/order";
+  orderHistoryURL: string = "http://realchoice-node-dev.ap-southeast-1.elasticbeanstalk.com/order_history";
+  //inprogressOrdersUrl: string = "http://localhost:5000/order";
+  //orderHistoryURL: string = "http://localhost:5000/order_history";
+  //categoriesEndPointUrl: string = "http://localhost:5000/categories";
+  //productsEndPointUrl: string = "http://localhost:5000/products";
 
   constructor(private http: HttpClient) { }
 

@@ -1,0 +1,9 @@
+<nb-card [nbSpinner]="loading">
+  <nb-card-header>
+    Orders
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="data" (userRowSelect)="onUserRowSelect($event)" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
+  </nb-card-body>
+</nb-card>

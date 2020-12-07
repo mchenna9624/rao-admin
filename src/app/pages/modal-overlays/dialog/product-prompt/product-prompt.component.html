@@ -33,6 +33,13 @@
             </div>
           </div>
           <div class="form-group row">
+            <label for="pictures" class="label col-sm-3 col-form-label">Image Location</label>
+            <div class="col-sm-9">
+              <input type="text" placeholder="Enter Image Location" class="form-control" formControlName="pictures"
+                     [ngClass]="{'form-control-danger': productForm.invalid && productForm.get('pictures').invalid && productForm.get('pictures').touched}">
+            </div>
+          </div>
+          <div class="form-group row">
             <label for="discount" class="label col-sm-3 col-form-label">Discount</label>
             <div class="col-sm-9">
               <input type="text" placeholder="Enter Discount" class="form-control" formControlName="discount"
@@ -61,6 +68,12 @@
                   {{category.category}}
                 </option>
               </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="shortDesc" class="label col-sm-3 col-form-label">Slab Details</label>
+            <div class="col-sm-12">
+              <ng2-smart-table [settings]="settings" [source]="data" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
             </div>
           </div>
         </form>

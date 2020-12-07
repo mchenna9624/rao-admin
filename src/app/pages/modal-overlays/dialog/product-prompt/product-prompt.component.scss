@@ -26,4 +26,24 @@
     width: 100%  !important;
     border: 0  !important;
   }
+
+  .nb-theme-cosmic nb-card.size-giant {
+      height: 55rem;
+      width: 55rem;
+  }
+
+}
+
+::ng-deep .nb-theme-cosmic nb-card.size-giant {
+    height: 55rem;
+    width: 55rem;
+}
+
+input, ::ng-deep input {
+  color: #fff !important;
+}
+
+::ng-deep .ng-star-inserted input {
+  color: #fff !important;
+  background-color: #252547 !important;
 }

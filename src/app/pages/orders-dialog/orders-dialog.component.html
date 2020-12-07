@@ -1,0 +1,22 @@
+<nb-card>
+  <nb-card-header>Order To Process</nb-card-header>
+  <nb-card-body>
+    <div class="list">
+      <ng-container><div class="listItem">First Name : {{orderInfo.FIRST_NAME}}</div></ng-container>
+      <ng-container><div class="listItem">Last Name : {{orderInfo.LAST_NAME}}</div></ng-container>
+      <ng-container><div class="listItem">Street : {{orderInfo.STREET_ADDRESS}}</div></ng-container>
+      <ng-container><div class="listItem">City : {{orderInfo.CITY_ADDRESS}}</div></ng-container>
+      <ng-container><div class="listItem">State : {{orderInfo.STATE_ADDRESS}}</div></ng-container>
+      <ng-container><div class="listItem">Zip : {{orderInfo.ZIP_ADDRESS}}</div></ng-container>
+      <ng-container><div class="listItem">Email : {{orderInfo.EMAIL_ADDRESS}}</div></ng-container>
+      <ng-container><div class="listItem">Phone : {{orderInfo.PHONE}}</div></ng-container>
+      <ng-container><div class="listItem">Order Id : {{orderInfo.ORDER_ID}}</div></ng-container>
+      <ng-container><div class="listItem">Order Status : {{orderInfo.ORDER_STATUS}}</div></ng-container>
+    </div>
+    <ng2-smart-table [settings]="settings" [source]="data" >
+    </ng2-smart-table>
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton hero status="primary" (click)="dismiss()">Close</button>
+  </nb-card-footer>
+</nb-card>

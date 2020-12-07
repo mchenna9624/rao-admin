@@ -15,6 +15,8 @@ export interface IProductsModel {
     shortDesc: string;
     desc: string;
     category: string;
+    slabs: any;
+    pictures: string;
 }
 
 export class ProductsModel implements IProductsModel{
@@ -27,6 +29,8 @@ export class ProductsModel implements IProductsModel{
   shortDesc: string;
   desc: string;
   category: string;
+  slabs: any;
+  pictures: string;
 
   constructor(obj?: IProductsModel) {
       this._id = obj && obj._id || null;
@@ -38,5 +42,7 @@ export class ProductsModel implements IProductsModel{
       this.shortDesc = obj && obj.shortDesc || null;
       this.desc = obj && obj.desc || null;
       this.category = obj && obj.category || null;
+      this.slabs = obj && obj.slabs || null;
+      this.pictures = obj && obj.pictures || null;
   }
 }

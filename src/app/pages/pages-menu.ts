@@ -25,4 +25,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
       }
     ],
   },
+  {
+    title: 'Orders',
+    icon: 'paper-plane',
+    link: '/pages/orders'
+  },
 ];

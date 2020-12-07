@@ -15,11 +15,54 @@ export class ProductPromptComponent  implements OnInit {
   categories: ICategoriesModel;
   products: IProductsModel;
   editableProduct: IProductsModel;
+  data: any = [];
+  loading = false;
 
   constructor(protected ref: NbDialogRef<ProductPromptComponent>, private fb: FormBuilder, private cacheService: CacheService) {
     console.log(" constructor called");
 
   }
+
+
+  settings = {
+    actions: {
+      edit: true,
+      add: true,
+      delete: true
+    },
+    add: {
+      addButtonContent: '<i class="nb-plus"></i>',
+      createButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
+    },
+    edit: {
+      editButtonContent: '<i class="nb-edit"></i>',
+      saveButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
+    },
+    delete: {
+      deleteButtonContent: '<i class="nb-trash"></i>',
+      confirmDelete: true,
+    },
+    columns: {
+      Id: {
+        title: 'Id',
+        type: 'number',
+      },
+      Quantity: {
+        title: 'Quantity',
+        type: 'string',
+      },
+      Price: {
+        title: 'Price',
+        type: 'string',
+      },
+      Margin: {
+        title: 'Margin %',
+        type: 'string',
+      },
+    },
+  };
 
   ngOnInit() {
     console.log(" init called");
@@ -33,6 +76,7 @@ export class ProductPromptComponent  implements OnInit {
       shortDesc: ['', Validators.required],
       desc: ['', Validators.required],
       category: ['', Validators.required],
+      pictures: ['', Validators.required]
     });
     this.editableProduct = this.cacheService.getEditableProduct();
     if(null != this.editableProduct){
@@ -44,7 +88,20 @@ export class ProductPromptComponent  implements OnInit {
       this.productForm.controls.shortDesc.setValue(this.editableProduct.shortDesc);
       this.productForm.controls.desc.setValue(this.editableProduct.desc);
       this.productForm.controls.category.setValue(this.editableProduct.category);
+      this.productForm.controls.pictures.setValue(this.editableProduct.pictures);
+      if(this.editableProduct.slabs){
+        this.data = this.editableProduct.slabs;
+      }else{
+        this.data = [];
+      }
+
     }
+  }
+
+  onDeleteConfirm(event): void {
+    var removeIndex = this.data.map(function(item) { return item.Quantity; }).indexOf(event.data.Quantity);
+    this.data.splice(removeIndex, 1);
+    event.confirm.resolve(event.source.data);
   }
 
   cancel() {
@@ -53,7 +110,9 @@ export class ProductPromptComponent  implements OnInit {
 
   submit() {
     if(this.productForm.valid){
-      this.ref.close(this.productForm.value);
+      let tmpObj = this.productForm.value;
+      tmpObj["slabs"] = this.data;
+      this.ref.close(tmpObj);
     }else{
       this.markFormGroupTouched(this.productForm);
     }

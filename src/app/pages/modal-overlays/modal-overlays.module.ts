@@ -32,6 +32,7 @@ import {
 } from './popovers/popover-examples.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { ProductPromptComponent } from './dialog/product-prompt/product-prompt.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 
 const COMPONENTS = [
@@ -74,6 +75,7 @@ const MODULES = [
   NbInputModule,
   NbSelectModule,
   NbTooltipModule,
+  Ng2SmartTableModule,
 ];
 
 const SERVICES = [
